@@ -1,10 +1,32 @@
 # PrzepisyKulinarne
-Aplikacja webowa w której można umieszczać własne przepisy kulinarne.
+Aplikacja webowa, w której można umieszczać własne przepisy kulinarne.
 
+## Opis projektu
+
+Strona umożliwia umieszczanie przepisów, przeglądanie, komentowanie, ocenianie. Użytkownik bez konta, ma możliwość jedynie ich przeglądania. Użytkownik może posiadać swój własny profil, na którym zamieszczane są informacje na temat jego przepisów (ilość wyświetleń, ocena, komentarze). Dostępny jest również prywatny czat, by móc popisać z innym użytkownikiem. Na głównej stronie znajdują się najnowsze przepisy zamieszczone przez różnych użytkowników. Można je sortować i filtrować w zależności od dostępnych ustawień.
+
+## Wykorzystane technologie
+
+- Python 3.x - język wysokiego poziomu, backend
+- Django 3.x - darmowy i open-source’owy framework do tworzenia aplikacji webowych w Pythonie. Został użyty do utworzenia i zarządzania ustawieniami serwera, jak i jego pracą. Posłużył do tworzenia modeli bazodanowych, API.
+- SQLite - baza danych, przechowująca informacje o użytkownikach i przepisach
+- Angular - kompleksowy framework do tworzenia aplikacji typu SPA (Single Page Application). Obejmuje narzędzia do obsługi routingu, umożliwia szybkie tworzenie widoków interfejsu użytkownika. Używa TypeScript, którego główną zaletą jest utrzymanie czystego i zrozumiałego kodu.
+- Bootstrap - Biblioteka do budowania wizualnej części stron internetowych.
+
+## Wygląd aplikacji
+
+<p align="center">
+<br>
+<img src="/images/Screenshot_1.png" width="50%"/>
+<img src="/images/Screenshot_2.png" width="50%"/>
+<img src="/images/Screenshot_3.png" width="50%"/>
+<img src="/images/Screenshot_4.png" width="50%"/>
+</p>
 
 ## Współautorstwo
 
 [Michal-Jankowski](https://github.com/Michal-Jankowski)
+
 [jackies-o](https://github.com/jackies-o)
 
 ### Oryginalne repozytorium
