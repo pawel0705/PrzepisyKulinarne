@@ -1,0 +1,37 @@
+[
+  {
+    "model": "recipes.RecipeCategory",
+    "pk": 1,
+    "fields": {
+      "name": "Śnadanie"
+    }
+  },
+  {
+    "model": "recipes.RecipeCategory",
+    "pk": 2,
+    "fields": {
+      "name": "Obiad"
+    }
+  },
+    {
+    "model": "recipes.RecipeCategory",
+    "pk": 3,
+    "fields": {
+      "name": "Deser"
+    }
+  },
+    {
+    "model": "recipes.RecipeCategory",
+    "pk": 4,
+    "fields": {
+      "name": "Kolacja"
+    }
+  },
+  {
+    "model": "recipes.RecipeImage",
+    "pk": 0,
+    "fields": {
+      "file": null
+    }
+  }
+]

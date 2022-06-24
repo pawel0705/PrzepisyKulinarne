@@ -1,0 +1,203 @@
+<section class="py-5">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div
+          class="card shadow-card swing-in-top-fwd"
+          style="border-radius: 1rem"
+        >
+          <div class="card-body p-4 p-lg-5 text-black">
+            <div class="row pb-2">
+              <span class="h2 fw-bold mb-0" style="color: #ff5e00">
+                {{ recipe.title }}
+                <hr />
+              </span>
+            </div>
+            <br />
+            <div class="row text-center">
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-star fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    <ng-container *ngIf="recipe.rating">
+                      {{ recipe.rating | number: "1.2-2" }}
+                    </ng-container>
+                    <ng-container *ngIf="recipe.rating == null">
+                      Brak
+                    </ng-container>
+                  </h4>
+                  <p class="count-text">Ocena</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-lightbulb-o fa-2x"></i>
+                  <h4 class="count-title count-number">{{ recipe.views }}</h4>
+                  <p class="count-text">Ilość wyświetleń</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-coffee fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    {{ getCategoryName(recipe.categoryId) }}
+                  </h4>
+                  <p class="count-text">Kategoria</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-user fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    <a
+                      href="/user-profile/{{ recipe.authorId }}"
+                      class="count-text mx-auto"
+                      style="color: #ff5e00"
+                    >
+                      {{ recipe.authorName }}</a
+                    >
+                  </h4>
+                  <p class="count-text">Autor</p>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="mx-auto d-block pt-4">
+              <div class="text-center">
+                <img
+                  [src]="mainImageSrc"
+                  alt="Główny obraz przepisu"
+                  style="max-width: 100%"
+                />
+              </div>
+            </div>
+            <!-- recipe -->
+            <div
+              class="row px-md-5 px-3 pt-5 single-recipe-container"
+              style="
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                max-width: 100%;
+                margin-left: 0.1em;
+              "
+            >
+              <div class="w-100 theme-filter" #recipeContainer></div>
+            </div>
+            <div
+              class="px-md-5 px-3 single-recipe-container"
+              style="max-width: 100%"
+            >
+              <ng-container *ngIf="recipe.createdDate">
+                <br />
+                Utworzono:
+                <small
+                  ><b>{{ recipe.createdDate | date: "dd-MM-yyyy" }}</b></small
+                >
+              </ng-container>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="col col-xl-12" style="color: #ff5e00">
+              <h3>Komentarze</h3>
+              <hr />
+              <ng-container *ngIf="authService.isLoggedIn">
+                <div
+                  class="row mt-3"
+                  [formGroup]="commentForm"
+                  *ngIf="commentForm"
+                >
+                  <div class="card card-create-comment ml-3">
+                    <div class="row">
+                      <div class="col-2">
+                        <img
+                          src="https://img.myloview.pl/tapety/hand-drawn-modern-man-avatar-profile-icon-or-portrait-icon-user-flat-avatar-icon-sign-profile-male-symbol-700-234216721.jpg"
+                          width="50"
+                          class="rounded-circle mt-2"
+                        />
+                      </div>
+                      <div class="col-10">
+                        <div class="comment-box ml-2">
+                          <h4>Dodaj komentarz</h4>
+                          <ngb-rating
+                            formControlName="rating"
+                            [max]="5"
+                            style="color: orange"
+                          ></ngb-rating>
+                          <textarea
+                            pInputTextArea
+                            maxlength="512"
+                            type="text"
+                            class="form-control mb-2"
+                            id="comment"
+                            placeholder="Komentarz"
+                            formControlName="comment"
+                          ></textarea>
+                          <div *ngIf="isCommentInvalid">
+                            <span class="red-text">Pole jest wymagane.</span>
+                          </div>
+                        </div>
+                        <button
+                          class="btn btn-dark btn-sm float-right"
+                          (click)="sendComment()"
+                        >
+                          Wyślij komentarz
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="authService.isLoggedIn == false">
+                Zaloguj się aby dodać komentarz
+                <br />
+              </ng-container>
+            </div>
+            <br />
+            <div class="col col-xl-12">
+              <ng-container *ngIf="recipe != null && recipe.comments != null">
+                <ng-container *ngFor="let comment of recipe.comments">
+                  <div class="card p-3">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="user d-flex flex-row align-items-center">
+                        <img
+                          src="https://img.myloview.pl/tapety/hand-drawn-modern-man-avatar-profile-icon-or-portrait-icon-user-flat-avatar-icon-sign-profile-male-symbol-700-234216721.jpg"
+                          width="30"
+                          class="user-img rounded-circle mr-2"
+                        />
+                        <span
+                          ><small
+                            class="font-weight-bold"
+                            style="color: #ff5e00"
+                            ><a
+                              style="color: #ff5e00"
+                              href="/user-profile/{{ comment.userId }}"
+                              >{{ comment.userName }}</a
+                            ></small
+                          >
+                          <br />
+                          <small class="font-weight-bold">{{
+                            comment.content
+                          }}</small></span
+                        >
+                      </div>
+                      <ngb-rating
+                        [rate]="comment.rating"
+                        [readonly]="true"
+                        [max]="5"
+                        style="color: orange"
+                      ></ngb-rating>
+                    </div>
+                  </div>
+                  <br />
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

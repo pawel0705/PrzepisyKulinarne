@@ -1,0 +1,9 @@
+Django==3.0.14
+django-binary-database-files==1.0.10
+django-cors-headers==3.10.1
+djangorestframework==3.12.4
+djangorestframework-jwt==1.11.0
+djangorestframework-simplejwt==5.0.0
+drf-yasg==1.20.0
+PyJWT==2.3.0
+djangochannelsrestframework

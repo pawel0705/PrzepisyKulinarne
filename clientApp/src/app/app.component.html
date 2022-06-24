@@ -1,0 +1,39 @@
+<app-confirmation></app-confirmation>
+
+<div class="main-root background-image-portal">
+  <div id="page-container">
+    <div id="content-wrap">
+      <app-navbar></app-navbar>
+      <div class="container-fluid container-fluid-width">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <footer id="footer">
+      <app-footer></app-footer>
+    </footer>
+  </div>
+</div>
+<app-loader></app-loader>
+<ng-container *ngIf="authService.isLoggedIn">
+  <ng-chat
+    #ngChatInstance
+    [adapter]="adapter"
+    [pollFriendsList]="true"
+    [title]="chatTitle"
+    [isCollapsed]="true"
+    [persistWindowsState]="false"
+    [searchEnabled]="false"
+    [pollingInterval]="1000"
+    [messagePlaceholder]="messagePlaceholder"
+    [userId]="authService.loggedId"
+    [isViewportOnMobileEnabled]="true"
+    (onParticipantChatOpened)="openedParticipantChat($event)"
+    (onParticipantChatClosed)="closedParticipantChat($event)"
+  ></ng-chat>
+</ng-container>
+
+<div hidden>
+  <!-- pre-load big images -->
+  <img src="../../../../assets/auth-login.jpg" />
+  <img src="../../../../assets/auth-register.jpg" />
+</div>

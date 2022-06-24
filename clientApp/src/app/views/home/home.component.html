@@ -1,0 +1,60 @@
+<section class="py-5">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div
+          class="card shadow-card swing-in-top-fwd"
+          style="border-radius: 1rem"
+        >
+          <div class="card-body p-4 p-lg-5 text-black">
+            <app-recipes-list> </app-recipes-list>
+            <br />
+            <br />
+            <div class="justify-content-around mt-md-2 mt-1">
+              <div class="m-md-4 m-1">
+                <div class="row">
+                  <div class="align-items-center mb-3 pb-1">
+                    <span class="h3 fw-bold mb-0" style="color: #ff5e00"
+                      >Użytkownicy portalu
+                      <hr
+                    /></span>
+
+                    <ng-container
+                      *ngIf="usersList == null || usersList.length == 0"
+                    >
+                      Brak użytkowników
+                    </ng-container>
+                    <ng-container
+                      *ngIf="usersList != null && usersList.length != 0"
+                    >
+                      <div class="row">
+                        <ng-container *ngFor="let user of usersList">
+                          <div class="col-md-3 mb-2">
+                            <div class="counter">
+                              <i class="fa fa-user fa-2x"></i>
+                              <h4 class="count-title count-number">
+                                {{ user.username }}
+                              </h4>
+                              <div style="text-align: center">
+                                <a
+                                  href="/user-profile/{{ user.id }}"
+                                  class="count-text mx-auto"
+                                  style="color: #ff5e00"
+                                  >Wyświetl profil</a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

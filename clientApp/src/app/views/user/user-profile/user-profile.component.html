@@ -1,0 +1,164 @@
+<section class="py-5">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div
+          class="card shadow-card swing-in-top-fwd"
+          style="border-radius: 1rem"
+        >
+          <div class="card-body p-4 p-lg-5 text-black">
+            <div class="align-items-center mb-3 pb-1">
+              <span class="h2 fw-bold mb-0" style="color: #ff5e00"
+                >Profil użytkownika
+                <hr
+              /></span>
+            </div>
+
+            <div class="row text-center">
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-user fa-2x"></i>
+                  <h4 class="count-title count-number">{{ userInfo.name }}</h4>
+                  <p class="count-text">Nazwa profilu</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-lightbulb-o fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    <ng-container *ngIf="userRecipes.length">
+                      {{ userRecipes.length }}
+                    </ng-container>
+                    <ng-container
+                      *ngIf="
+                        userRecipes.length == null || userRecipes.length == 0
+                      "
+                    >
+                      0
+                    </ng-container>
+                  </h4>
+                  <p class="count-text">Ilość przepisów</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-eye fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    <ng-container *ngIf="userInfo.views">
+                      {{ userInfo.views }}
+                    </ng-container>
+                    <ng-container *ngIf="userInfo.views == null">
+                      Brak
+                    </ng-container>
+                  </h4>
+                  <p class="count-text">Wyświetleń przepisów</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="counter">
+                  <i class="fa fa-star fa-2x"></i>
+                  <h4 class="count-title count-number">
+                    <ng-container *ngIf="userInfo.rating">
+                      {{ userInfo.rating }}
+                    </ng-container>
+                    <ng-container *ngIf="userInfo.rating == null">
+                      Brak
+                    </ng-container>
+                  </h4>
+                  <p class="count-text">Ocena</p>
+                </div>
+              </div>
+            </div>
+            <br />
+
+            <div class="align-items-center mb-3 pb-1">
+              <span class="h2 fw-bold mb-0" style="color: #ff5e00"
+                >Utworzone przepisy
+                <hr
+              /></span>
+            </div>
+            <ng-container
+              *ngIf="userRecipes == null || userRecipes.length == 0"
+            >
+              Ten użytkownik nie posiada żadnych przepisów
+            </ng-container>
+            <ng-container *ngIf="userRecipes != null && userRecipes.length > 0">
+              <ng-container *ngFor="let recipe of userRecipes">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mt-4">
+                      <a
+                        [routerLink]="'../../recipe/details/' + recipe.recipeId"
+                        class="custom-card"
+                      >
+                        <div class="card border-0">
+                          <div class="row no-gutters">
+                            <div class="col-md-4">
+                              <div class="recipe-container-text-image-list">
+                                <img
+                                  class="card-img-list recipes-portal-avatar-list"
+                                  [src]="recipe.mainImageSrc"
+                                  alt="Główny obraz przepisu"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body recipe-text-body">
+                                <h4
+                                  class="recipe-card-title"
+                                  style="margin-top: -8px; color: #ff5e00"
+                                >
+                                  {{ recipe.title }}
+                                  <span style="color: orange">
+                                    <ngb-rating
+                                      [rate]="recipe.rating + 0.4"
+                                      [readonly]="true"
+                                      [max]="5"
+                                    ></ngb-rating>
+                                  </span>
+                                </h4>
+                                <small>
+                                  <p>
+                                    Utworzono:
+                                    <span style="color: #ff5e00">{{
+                                      recipe.createdDate | date: "dd-MM-yyyy"
+                                    }}</span>
+                                    &nbsp; &nbsp; Kategoria:
+                                    <span style="color: #ff5e00">{{
+                                      getCategoryName(recipe.categoryId)
+                                    }}</span>
+                                    &nbsp; &nbsp; Ocena:
+                                    <span style="color: #ff5e00">
+                                      <ng-container *ngIf="recipe.rating">
+                                        {{ recipe.rating | number: "1.2-2" }}
+                                      </ng-container>
+                                      <ng-container
+                                        *ngIf="recipe.rating == null"
+                                      >
+                                        Brak
+                                      </ng-container>
+                                    </span>
+                                  </p>
+                                </small>
+                                <p
+                                  *ngIf="recipe.shortDescription != null"
+                                  class="card-text description-text recipe-card-description-list"
+                                >
+                                  {{ recipe.shortDescription }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

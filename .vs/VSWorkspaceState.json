@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\clientApp",
+    "\\clientApp\\src",
+    "\\clientApp\\src\\app",
+    "\\clientApp\\src\\app\\infrastructure",
+    "\\clientApp\\src\\app\\shared",
+    "\\clientApp\\src\\app\\shared\\mixins",
+    "\\clientApp\\src\\app\\shared\\mixins\\forms"
+  ],
+  "SelectedNode": "\\clientApp\\src\\app\\shared\\mixins\\forms\\FormMixin.ts",
+  "PreviewInSolutionExplorer": false
+}

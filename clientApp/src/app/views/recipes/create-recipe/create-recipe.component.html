@@ -1,0 +1,184 @@
+<section class="py-5">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div
+          class="card shadow-card swing-in-top-fwd"
+          style="border-radius: 1rem"
+        >
+          <div class="card-body p-4 p-lg-5 text-black">
+            <div class="align-items-center mb-3 pb-1">
+              <span class="h2 fw-bold mb-0" style="color: #ff5e00"
+                >{{ headerTitle }}
+                <hr
+              /></span>
+            </div>
+            <div class="row mt-3" [formGroup]="recipeForm" *ngIf="recipeForm">
+              <div class="col">
+                <div class="form-outline mb-4">
+                  <div class="textarea-wrapper">
+                    <input
+                      pInputTextArea
+                      maxlength="65"
+                      type="text"
+                      class="form-control"
+                      id="title"
+                      placeholder="Tytuł"
+                      formControlName="title"
+                    />
+                    <label for="title">
+                      Tytuł
+                      <span class="required"></span>
+                    </label>
+                    <div *ngIf="isTitleInvalid">
+                      <span class="red-text">Pole jest wymagane.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="textarea-wrapper">
+                    <textarea
+                      pInputTextArea
+                      maxlength="512"
+                      type="text"
+                      class="form-control"
+                      id="shortDescription"
+                      placeholder="Krótki opis"
+                      formControlName="shortDescription"
+                    ></textarea>
+                    <label for="shortDescription">
+                      Krótki opis
+                      <span class="required"></span>
+                    </label>
+                    <div *ngIf="isShortDescriptionInvalid">
+                      <span class="red-text">Pole jest wymagane.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="textarea-wrapper">
+                    <select
+                      id="categoryId"
+                      class="form-select"
+                      formControlName="categoryId"
+                    >
+                      <ng-container *ngFor="let category of categories">
+                        <option [value]="category.id">
+                          {{ category.name }}
+                        </option>
+                      </ng-container>
+                    </select>
+                    <label for="categoryId">
+                      Kategoria
+                      <span class="required"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-outline mb-4">
+                      <div
+                        class="dropzone"
+                        tabindex="0"
+                        [class.light-gray-background]="isDragging"
+                        draggable="true"
+                      >
+                        <div class="selectFile">
+                          <div class="justify-content-center row">
+                            <div id="fileBtn" class="file btn btn-green">
+                              WYBIERZ PLIK LUB PRZECIĄGNIJ GO TUTAJ
+                              <input
+                                id="fileDropRef"
+                                formControlName="mainImg"
+                                class="dragDropInput form-control"
+                                type="file"
+                                name="file"
+                                accept=".jpg,.jpeg,.png,.bmp"
+                                tabindex="0"
+                                (dragenter)="onDragEnter($event)"
+                                (dragleave)="onDragLeave($event)"
+                                (change)="onMainImageSelected($event)"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <label for="fileDropRef">
+                        Wybierz obraz główny
+                        <span class="required"></span>
+                      </label>
+                      <div *ngIf="isMainImageInvalid">
+                        <span class="red-text">Pole jest wymagane.</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-outline" *ngIf="imageSrc != '#'">
+                      <img
+                        tabindex="0"
+                        [src]="imageSrc"
+                        class="img-fluid"
+                        style="height: 115px"
+                      />
+                    </div>
+                    <div class="form-outline" *ngIf="imageSrc == '#'">
+                      <img
+                        tabindex="0"
+                        src="https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
+                        class="img-fluid"
+                        style="height: 115px"
+                      />
+                    </div>
+                    <label for="fileDropRef">
+                      Aktualny obraz
+                      <span class="required"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-outline mb-4">
+                  <editor
+                    id="recipeContentEditor"
+                    apiKey="x1ygfmythl5cv1gv3i5alg3h53yasnhqxx94yle1zgkfhq04"
+                    formControlName="content"
+                    placeholder="Twój przepis"
+                    [init]="tinyInit"
+                  ></editor>
+                  <label for="recipeContentEditor">
+                    Twój przepis
+                    <span class="required"></span>
+                  </label>
+                  <div *ngIf="isContentInvalid">
+                    <span class="red-text">Pole jest wymagane.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="pt-1 col">
+                <button
+                  class="btn btn-dark btn-lg btn-block"
+                  (click)="onSave()"
+                >
+                  {{ saveAndPublicizeBtnLabel }}
+                </button>
+              </div>
+              <div
+                class="pt-1 col d-grid gap-2 d-md-flex justify-content-md-end"
+              >
+                <button
+                  class="btn btn-dark btn-lg btn-block"
+                  (click)="onCancel()"
+                >
+                  {{ cancelBtnLabel }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

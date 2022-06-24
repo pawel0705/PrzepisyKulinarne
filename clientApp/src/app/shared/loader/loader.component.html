@@ -1,0 +1,5 @@
+<div *ngIf="loaderService.isVisible" class="loader d-flex justify-content-center align-items-center" [class.hidden]="loaderService.isHidden">
+    <div class="spinner-grow text-warning" role="status">
+        <div class="loading-text">Wczytuję...</div>
+    </div>
+</div>

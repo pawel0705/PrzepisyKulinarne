@@ -1,0 +1,50 @@
+<div
+  class="modal {{ confirmationService.modalClasses }}"
+  tabindex="-1"
+  role="dialog"
+  id="confirmationModal"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title border-dark"
+          tabindex="0"
+          [innerHtml]="confirmationService.headerText"
+        ></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div tabindex="0" class="border-dark">
+          <p [innerHtml]="confirmationService.bodyText"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          data-bs-dismiss="modal"
+          id="{{ confirmationService.submitButton.id }}"
+          (click)="confirmationService.submitButton.action()"
+          class="ml-2 mr-2 modal-close btn btn-danger {{
+            confirmationService.submitButton.class
+          }}"
+          [innerHtml]="confirmationService.submitButton.text"
+        ></button>
+
+        <button
+          data-bs-dismiss="modal"
+          id="{{ confirmationService.abortButton.id }}"
+          class="ml-2 mr-2 modal-close btn btn-secondary {{
+            confirmationService.abortButton.class
+          }}"
+          (click)="confirmationService.abortButton.action()"
+          [innerHtml]="confirmationService.abortButton.text"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
