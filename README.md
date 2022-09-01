@@ -15,12 +15,12 @@ Strona umożliwia umieszczanie przepisów, przeglądanie, komentowanie, oceniani
 
 ## Uruchomienie aplikacji
 
-* W celu uruchomienia serwera należy przejść do folderu recipesAPI i wywołanie komendy w konsoli:
-```
+- W celu uruchomienia serwera należy przejść do folderu recipesAPI i wywołanie komendy w konsoli:
+
 python manage.py runserver
-```
-* W celu uruchomienia aplikacji klienckiej (przeglądarki) należy przejść do folderu ClientApp i uruchomić komendę w konsoli:
-```
+
+- W celu uruchomienia aplikacji klienckiej (przeglądarki) należy przejść do folderu ClientApp i uruchomić komendę w konsoli:
+
 ng serve --open
 
 ## Wygląd aplikacji
