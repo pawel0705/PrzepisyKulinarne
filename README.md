@@ -13,6 +13,16 @@ Strona umożliwia umieszczanie przepisów, przeglądanie, komentowanie, oceniani
 - Angular - kompleksowy framework do tworzenia aplikacji typu SPA (Single Page Application). Obejmuje narzędzia do obsługi routingu, umożliwia szybkie tworzenie widoków interfejsu użytkownika. Używa TypeScript, którego główną zaletą jest utrzymanie czystego i zrozumiałego kodu.
 - Bootstrap - Biblioteka do budowania wizualnej części stron internetowych.
 
+## Uruchomienie aplikacji
+
+* W celu uruchomienia serwera należy przejść do folderu recipesAPI i wywołanie komendy w konsoli:
+```
+python manage.py runserver
+```
+* W celu uruchomienia aplikacji klienckiej (przeglądarki) należy przejść do folderu ClientApp i uruchomić komendę w konsoli:
+```
+ng serve --open
+
 ## Wygląd aplikacji
 
 <p align="center">
